@@ -8,7 +8,7 @@ public class PlayerController : MonoBehaviour
     //variables 
     public Camera cami;
     public NavMeshAgent fred;
-
+    bool isMoving = false;
     // Update is called once per frame
     void Update()
     {
@@ -34,11 +34,12 @@ public class PlayerController : MonoBehaviour
 
             //saves the data from the generated ray as a RaycastHit
             ////and check if a hitable item was selected
-            if (Physics.Raycast(ray, out hit))
+            if (Physics.Raycast(ray, out hit) && !isMoving)
             {
                 Debug.Log("hit registered"); 
                 //move our agent using it's movement feature
                 fred.SetDestination(hit.point);
+                //isMoving = true; 
             }
 
 
